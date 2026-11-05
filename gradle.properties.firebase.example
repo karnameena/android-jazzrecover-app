@@ -1,0 +1,7 @@
+# Copy the four properties below into %USERPROFILE%\\.gradle\\gradle.properties on Windows.
+# Replace placeholders with values from Firebase Project settings > Your apps > Android app.
+# Do NOT commit real values into Git.
+jazzFirebaseApiKey=YOUR_FIREBASE_API_KEY
+jazzFirebaseAppId=YOUR_FIREBASE_ANDROID_APP_ID
+jazzFirebaseProjectId=YOUR_FIREBASE_PROJECT_ID
+jazzFirebaseSenderId=YOUR_FIREBASE_SENDER_ID

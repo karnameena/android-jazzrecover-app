@@ -1,0 +1,37 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<uses-permission android:name="android.permission.INTERNET"/>
+<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+<uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
+<uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS"/>
+<uses-permission android:name="android.permission.CAMERA"/>
+<uses-permission android:name="android.permission.BLUETOOTH" android:maxSdkVersion="30"/>
+<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" android:maxSdkVersion="30"/>
+<uses-permission android:name="android.permission.BLUETOOTH_CONNECT"/>
+<uses-permission android:name="android.permission.BLUETOOTH_SCAN"/>
+<uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE"/>
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE_CAMERA"/>
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION"/>
+<uses-permission android:name="android.permission.WAKE_LOCK"/>
+<uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+<application android:name=".JazzRecoveryApplication" android:label="Jazz Recovery" android:icon="@mipmap/ic_launcher" android:roundIcon="@mipmap/ic_launcher_round" android:theme="@android:style/Theme.Material.NoActionBar" android:usesCleartextTraffic="false" android:allowBackup="false">
+<receiver android:name=".JazzRecoveryAdminReceiver" android:permission="android.permission.BIND_DEVICE_ADMIN" android:exported="true">
+<meta-data android:name="android.app.device_admin" android:resource="@xml/device_admin_receiver"/>
+<intent-filter><action android:name="android.app.action.DEVICE_ADMIN_ENABLED"/></intent-filter>
+</receiver>
+<receiver android:name=".RecoveryBootReceiver" android:enabled="true" android:exported="false">
+<intent-filter>
+<action android:name="android.intent.action.BOOT_COMPLETED"/>
+<action android:name="android.intent.action.USER_UNLOCKED"/>
+<action android:name="android.intent.action.MY_PACKAGE_REPLACED"/>
+</intent-filter>
+</receiver>
+<service android:name=".RecoveryPushMessagingService" android:exported="false">
+<intent-filter><action android:name="com.google.firebase.MESSAGING_EVENT"/></intent-filter>
+</service>
+<activity android:name=".MainActivity" android:exported="true"><intent-filter><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/></intent-filter></activity>
+<service android:name=".RecoveryAgentService" android:enabled="true" android:exported="false" android:foregroundServiceType="camera|location"/>
+</application></manifest>
